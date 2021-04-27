@@ -15,6 +15,8 @@
 ### because we're just interested in compile-test. We also don't run 
 ### FEATURES="test", or test multiple USE flag combinations.
 ###
+### Uses pkg-testing-tool, https://github.com/slashbeast/pkg-testing-tools
+### 
 
 main() {
 	local all=0
