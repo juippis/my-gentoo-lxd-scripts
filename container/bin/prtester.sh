@@ -40,8 +40,12 @@ echo ""
 
 # We'll need to go through commit array in reverse order.
 for (( j=${#pkgstobetestedfinalarray[@]}-1; j>=0; j-- )); do
+	atom=$(echo "${pkgstobetestedfinalarray[${j}]}" | cut -d  "/" -f 2)
 	~/bin/pkg-testing-tools/pkg-testing-tool --extra-env-file 'test.conf' \
 		--append-required-use '!libressl !profile !systemd' --test-feature-scope once \
-		--max-use-combinations 6 -p "=${pkgstobetestedfinalarray[${j}]}"
+		--max-use-combinations 6 --report /var/tmp/portage/vbslogs/"${atom}"-"${j}".json \
+		-p "=${pkgstobetestedfinalarray[${j}]}"
 done
 
+echo "Error reports for failed atoms, use errors_and_qa_notices.sh to find out exact errors:"
+grep -r exit_code /var/tmp/portage/vbslogs/ | grep "1,"
