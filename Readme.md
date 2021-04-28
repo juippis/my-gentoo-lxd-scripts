@@ -1,6 +1,6 @@
 # My Gentoo LXD scripts
 
-This repo collects the required scripts and configs required to run the ["ultimate lxd testing environment"](https://wiki.gentoo.org/wiki/User:Juippis/The_ultimate_testing_system_with_lxd). 
+This repo collects the scripts and configs required to run the ["ultimate lxd testing environment"](https://wiki.gentoo.org/wiki/User:Juippis/The_ultimate_testing_system_with_lxd). 
 
 
 ## Repository structure:
