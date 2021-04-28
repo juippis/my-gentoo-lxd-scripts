@@ -7,14 +7,19 @@
 # find out exact errors easier.
 #
 
-echo "Grepping through the logs for any errors or QA notices..."
-grep -r "QA Notice:" /var/tmp/portage/vbslogs/build/
-grep -r "ERROR:" /var/tmp/portage/vbslogs/build/ | grep "failed"
-grep -r "* Failed to" /var/tmp/portage/vbslogs/build/
-grep -r "is deprecated, use .* instead" /var/tmp/portage/vbslogs/build/
-grep -r "installing to one or more unexpected paths" /var/tmp/portage/vbslogs/build/
-grep -r "Permission denied" /var/tmp/portage/vbslogs/build/
-grep -r "command not found" /var/tmp/portage/vbslogs/build/
-grep -r "WARNING: Unknown options:" /var/tmp/portage/vbslogs/build/
-echo "Finished grepping."
+if [[ -d "/var/tmp/portage/vbslogs/build/" ]]; then
+	echo "Grepping through the logs for any errors or QA notices..."
+	grep -r "QA Notice:" /var/tmp/portage/vbslogs/build/
+	grep -r "ERROR:" /var/tmp/portage/vbslogs/build/ | grep "failed"
+	grep -r "* Failed to" /var/tmp/portage/vbslogs/build/
+	grep -r "is deprecated, use .* instead" /var/tmp/portage/vbslogs/build/
+	grep -r "installing to one or more unexpected paths" /var/tmp/portage/vbslogs/build/
+	grep -r "Permission denied" /var/tmp/portage/vbslogs/build/
+	grep -r "command not found" /var/tmp/portage/vbslogs/build/
+	grep -r "WARNING: Unknown options:" /var/tmp/portage/vbslogs/build/
+	echo "Finished grepping."
 
+else
+	echo "No desired atoms were tested apparently? Exiting..."
+
+fi
