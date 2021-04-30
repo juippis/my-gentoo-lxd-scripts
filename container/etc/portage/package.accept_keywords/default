@@ -1,0 +1,3 @@
+# Optional, ~ ruby often breaks for me, breaking automation.
+
+dev-lang/ruby -~amd64
