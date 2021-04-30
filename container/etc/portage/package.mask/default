@@ -1,0 +1,3 @@
+# Optional. This will prefer rust-bin over rust, but if you use binpkg's, this 
+# doesn't really make a difference.
+dev-lang/rust
