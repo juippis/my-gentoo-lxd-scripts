@@ -1,0 +1,36 @@
+# Optional examples of what you can do, try to avoid filling this file too 
+# much, and only control what you have installed, or to get past popular 
+# REQUIRED_USE constraints.
+app-editors/vim -X -gpm -python
+app-portage/pfl -network-cron
+dev-db/sqlite icu
+dev-lang/mono minimal
+dev-lang/perl ithreads
+dev-python/PyQt5 gui network printsupport svg testlib webchannel websockets widgets
+dev-lang/python sqlite ssl xml
+dev-libs/efl gles2-only -opengl
+dev-libs/libpcre pcre16
+dev-libs/libpcre2 pcre16
+dev-libs/libxml2 icu
+dev-python/pypy3 sqlite
+dev-python/wxpython webkit
+dev-qt/qtwebengine jumbo-build widgets
+dev-util/pkgcheck network
+dev-vcs/git -perl -python -webdav
+media-libs/libcanberra alsa
+media-libs/mesa egl gles2 llvm wayland
+net-libs/webkit-gtk X egl gstreamer introspection jpeg2k jumbo-build opengl
+net-misc/connman nftables
+net-misc/openssh -X
+sys-apps/file -seccomp
+sys-apps/portage gentoo-dev -rsync-verify
+sys-apps/util-linux -python -udev
+sys-devel/llvm xml
+sys-kernel/gentoo-kernel-bin -initramfs
+sys-libs/ncurses -gpm
+sys-libs/pam -filecaps
+sys-libs/zlib minizip
+www-client/w3m -gtk -X
+x11-base/xorg-server wayland xvfb
+x11-libs/libdrm video_cards_radeon
+x11-libs/wxGTK X gstreamer opengl sdl tiff webkit
