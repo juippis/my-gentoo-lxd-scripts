@@ -12,7 +12,7 @@ if [[ -d "/var/tmp/portage/vbslogs/build/" ]]; then
 	grep -r "QA Notice:" /var/tmp/portage/vbslogs/build/
 	grep -r "ERROR:" /var/tmp/portage/vbslogs/build/ | grep "failed"
 	grep -r "* Failed to" /var/tmp/portage/vbslogs/build/
-	grep -r "is deprecated, use .* instead" /var/tmp/portage/vbslogs/build/
+	# grep -r "is deprecated, use .* instead" /var/tmp/portage/vbslogs/build/
 	grep -r "installing to one or more unexpected paths" /var/tmp/portage/vbslogs/build/
 	grep -r "Permission denied" /var/tmp/portage/vbslogs/build/
 	grep -r "command not found" /var/tmp/portage/vbslogs/build/
