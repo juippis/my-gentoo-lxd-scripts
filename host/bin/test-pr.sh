@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Test a https://github.com/gentoo/gentoo number, for example:
+# Test a https://github.com/gentoo/gentoo pull request, for example:
 # Input: test-pr.sh 12345
 # Would test https://github.com/gentoo/gentoo/pull/12345
 
