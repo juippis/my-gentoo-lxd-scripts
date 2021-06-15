@@ -46,7 +46,7 @@ main() {
 	fi
 
 	wget https://qa-reports.gentoo.org/output/genrdeps/dindex/"${atom}" -O /tmp/"${pkgname}"-rdeps.txt
-	sed -i '/9999/d' /tmp/"${pkgname}"-rdeps.txt
+	sed -e '/9999/d' -e '/[B]/d' -e '/virtual\//d' -i /tmp/"${pkgname}"-rdeps.txt
 
 	mapfile -t allrdepsarray < <(cat /tmp/"${pkgname}"-rdeps.txt)
 
