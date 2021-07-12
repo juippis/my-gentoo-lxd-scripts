@@ -17,6 +17,10 @@ This repo collects the scripts and configs required to run ["ultimate lxd testin
 
    Necessary scripts required to run from the host machine, in other words, outside the container.
 
+* pkg-testing-tool-patches
+
+   Easy to access patches for different needs, e.g. general PR testing, stabilization work...
+
 
 ## Links
 * https://wiki.gentoo.org/wiki/User:Juippis/The_ultimate_testing_system_with_lxd
