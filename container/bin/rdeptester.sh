@@ -73,9 +73,8 @@ main() {
 			fi
 
 			export USE="${exportlist}"
-			~/bin/pkg-testing-tools/pkg-testing-tool --extra-env-file 'test.conf' \
-				--append-required-use '!debug !doc !examples !gtk-doc !libressl !profile !systemd' \
-				--test-feature-scope never --max-use-combinations 1 \
+			pkg-testing-tool --extra-env-file 'test.conf' --test-feature-scope never
+				--append-required-use '!doc !examples !gtk-doc ' --max-use-combinations 1 \
 				--report /var/tmp/portage/vbslogs/"${testingpkgname}-${k}.json" \
 				-p "=${atomname}"
 			unset USE
@@ -97,9 +96,8 @@ main() {
 			fi
 
 			export USE="${exportlist}"
-			~/bin/pkg-testing-tools/pkg-testing-tool --extra-env-file 'test.conf' \
-				--append-required-use '!debug !libressl !profile !systemd' \
-				--test-feature-scope never --max-use-combinations 1 \
+			pkg-testing-tool --extra-env-file 'test.conf' --test-feature-scope never \
+				--append-required-use '!doc !examples !gtk-doc' --max-use-combinations 1 \
 				--report /var/tmp/portage/vbslogs/"${testingpkgname}-${l}.json" \
 				-p "=${atomname}"
 			unset USE
