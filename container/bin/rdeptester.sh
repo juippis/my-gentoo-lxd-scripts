@@ -74,7 +74,7 @@ main() {
 
 			export USE="${exportlist}"
 			pkg-testing-tool --extra-env-file 'test.conf' --test-feature-scope never \
-				--append-required-use '!doc !examples !gtk-doc' --max-use-combinations 1 \
+				--append-required-use '!doc !examples !gtk-doc !test' --max-use-combinations 1 \
 				--report /var/tmp/portage/vbslogs/"${testingpkgname}-${k}.json" \
 				-p "=${atomname}"
 			unset USE
@@ -97,7 +97,7 @@ main() {
 
 			export USE="${exportlist}"
 			pkg-testing-tool --extra-env-file 'test.conf' --test-feature-scope never \
-				--append-required-use '!doc !examples !gtk-doc' --max-use-combinations 1 \
+				--append-required-use '!doc !examples !gtk-doc !test' --max-use-combinations 1 \
 				--report /var/tmp/portage/vbslogs/"${testingpkgname}-${l}.json" \
 				-p "=${atomname}"
 			unset USE
