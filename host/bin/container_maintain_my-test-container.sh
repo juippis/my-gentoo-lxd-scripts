@@ -7,7 +7,7 @@ lxc exec my-test-container -- su --login -lc "(sleep 10 && emerge --sync)"
 lxc exec my-test-container -- su --login -lc "(sleep 10 && emerge -uvDN --with-bdeps=y --binpkg-changed-deps=y --keep-going world && emerge --depclean)"
 lxc exec my-test-container -- su --login -lc "(eclean-kernel -n 1)"
 lxc exec my-test-container -- su --login -lc "(eselect news read && etc-update)"
-lxc exec my-test-container -- su --login -lc "(sleep 10 && cd ~/bin/pkg-testing-tools && git pull)"
+lxc exec my-test-container -- su --login -lc "(sleep 10 && cd ~/lxd-bin && git pull)"
 lxc exec my-test-container -- su --login -lc "(sleep 10 && pfl)"
 lxc exec my-test-container -- su --login -lc "eclean packages --changed-deps"
 lxc stop my-test-container
