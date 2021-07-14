@@ -45,12 +45,13 @@ mkdir -p /var/tmp/portage/vbslogs/
 sleep 5
 
 echo ""
-echo "!! Modifying /root/.bashrc to our needs."
+echo "!! Modifying /root/.bashrc and /root/.profile to our needs."
 echo ""
 
 echo "PATH=\"\$PATH:~/lxd-bin/container/bin\"" >> /root/.bashrc
 echo "/root/lxd-bin/container/bin/fixshm.sh" >> /root/.bashrc
 /root/lxd-bin/container/bin/fixshm.sh
+cp /root/.bashrc /root/.profile
 
 echo ""
 echo "!! Switching portage tree to git, and syncing."
