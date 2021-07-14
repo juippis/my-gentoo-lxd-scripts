@@ -8,7 +8,7 @@ echo "Initializing new test environment... this will take a while."
 lxc copy my-test-container my-test-container-snap-tmp
 
 lxc start my-test-container-snap-tmp
-lxc exec my-test-container-snap-tmp -- bash
+lxc exec my-test-container-snap-tmp -- su --login
 
 echo "Uploading pfl data..." 
 
