@@ -13,6 +13,6 @@ lxc exec my-test-container-snap-"${1}" -- su --login -lc "(sleep 10 && cd /var/d
 lxc exec my-test-container-snap-"${1}" -- su --login -lc "(sleep 10 && ~/lxd-bin/container/bin/prtester.sh)"
 lxc exec my-test-container-snap-"${1}" -- su --login -lc "(sleep 10 && pfl &>/dev/null)"
 lxc exec my-test-container-snap-"${1}" -- su --login -lc "(~/lxd-bin/container/bin/errors_and_qa_notices.sh)"
-lxc exec my-test-container-snap-"${1}" -- bash
+lxc exec my-test-container-snap-"${1}" -- su --login
 lxc stop my-test-container-snap-"${1}"
 
