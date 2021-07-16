@@ -1,3 +1,7 @@
+# Rename as /etc/portage/make.conf.custom which gets sourced. 
+# Edit to your needs.
+
+EMERGE_DEFAULT_OPTS="--jobs=8 --usepkg --autounmask=y --autounmask-write --autounmask-continue --autounmask-use=y"
 MAKEOPTS="-j16 -l10"
 
 PORTAGE_IONICE_COMMAND="/usr/local/bin/io-priority \${PID}"
