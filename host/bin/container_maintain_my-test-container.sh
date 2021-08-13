@@ -4,11 +4,12 @@
 # Adjust to your needs. 
 lxc start my-test-container
 lxc exec my-test-container -- su --login -lc "(sleep 10 && cd ~/lxd-bin && git pull)"
-lxc exec my-test-container -- su --login -lc "(sleep 10 && emerge --sync)"
+lxc exec my-test-container -- su --login -lc "(cd ~/ionen-dev-scripts && git pull)"
+lxc exec my-test-container -- su --login -lc "(emerge --sync)"
 lxc exec my-test-container -- su --login -lc "(emerge -uvDN --with-bdeps=y --binpkg-changed-deps=y --keep-going world && emerge --depclean)"
 lxc exec my-test-container -- su --login -lc "(eclean-kernel -n 1)"
 lxc exec my-test-container -- su --login -lc "(eselect news read && etc-update)"
-lxc exec my-test-container -- su --login -lc "(pfl)"
+lxc exec my-test-container -- su --login -lc "pfl"
 lxc exec my-test-container -- su --login -lc "eclean packages --changed-deps"
 lxc stop my-test-container
 

@@ -3,6 +3,7 @@
 echo ""
 echo "!! Getting scripts and git portage configuration from "
 echo "!!   https://github.com/juippis/my-gentoo-lxd-scripts"
+echo "!!   https://github.com/ionenwks/ionen-dev-scripts"
 echo ""
 
 sleep 5
@@ -14,6 +15,9 @@ git config core.sparsecheckout true
 echo container/bin/* > .git/info/sparse-checkout
 echo container/etc/* >> .git/info/sparse-checkout
 git read-tree -m -u HEAD
+
+cd /root || exit
+git clone --depth=1 https://github.com/ionenwks/ionen-dev-scripts.git || exit
 
 echo ""
 echo "!! Git configuration done."
@@ -31,6 +35,7 @@ sleep 5
 rm -f /etc/portage/make.conf
 rmdir /etc/portage/package.use/ || return
 
+ln -s /root/lxd-bin/container/etc/portage/bashrc /etc/portage/bashrc
 ln -s /root/lxd-bin/container/etc/portage/env/ /etc/portage/env
 ln -s /root/lxd-bin/container/etc/portage/make.conf /etc/portage/make.conf
 ln -s /root/lxd-bin/container/etc/portage/package.accept_keywords/ /etc/portage/package.accept_keywords
@@ -48,7 +53,7 @@ echo ""
 echo "!! Modifying /root/.bashrc and /root/.profile to our needs."
 echo ""
 
-echo "PATH=\"\$PATH:~/lxd-bin/container/bin\"" >> /root/.bashrc
+echo "PATH=\"\$PATH:~/lxd-bin/container/bin:~/ionen-dev-scripts/scripts/\"" >> /root/.bashrc
 echo "/root/lxd-bin/container/bin/fixshm.sh" >> /root/.bashrc
 /root/lxd-bin/container/bin/fixshm.sh
 cp /root/.bashrc /root/.profile
