@@ -1,3 +1,4 @@
+source /root/ionen-dev-scripts/portage/qa-vdb.bashrc
 post_pkg_postinst() {
-	[[ ${QA_NEEDED_REPORT} == y ]] && ~/ionen-dev-scripts/scripts/qa-vdb ${CATEGORY}/${PF};
+	qa-vdb_post_pkg_postinst
 }
