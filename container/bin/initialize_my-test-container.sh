@@ -47,6 +47,8 @@ mkdir -p /etc/portage/package.env/
 mkdir -p /etc/portage/package.unmask/
 mkdir -p /var/tmp/portage/vbslogs/
 
+touch /etc/portage/make.conf.custom
+
 sleep 5
 
 echo ""
