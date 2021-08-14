@@ -60,6 +60,9 @@ echo "/root/lxd-bin/container/bin/fixshm.sh" >> /root/.bashrc
 /root/lxd-bin/container/bin/fixshm.sh
 cp /root/.bashrc /root/.profile
 
+# qa-sed needs +x from portage
+chmod 0711 /root
+
 echo ""
 echo "!! Switching portage tree to git, and syncing."
 echo ""
