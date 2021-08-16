@@ -10,6 +10,7 @@ dev-python/pypy3 sqlite
 dev-qt/qtwebengine -jumbo-build
 dev-util/pkgcheck network
 dev-vcs/git -perl -python -webdav
+media-libs/libcanberra alsa udev
 net-libs/webkit-gtk -jumbo-build
 sys-apps/portage gentoo-dev -rsync-verify
 sys-kernel/gentoo-kernel-bin -initramfs
