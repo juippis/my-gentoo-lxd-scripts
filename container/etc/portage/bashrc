@@ -1,5 +1,5 @@
-source /root/ionen-dev-scripts/portage/qa-sed.bashrc
-source /root/ionen-dev-scripts/portage/qa-vdb.bashrc
+source /usr/share/iwdevtools/qa-sed.bashrc
+source /usr/share/iwdevtools/qa-vdb.bashrc
 
 post_pkg_postinst() {
 	qa-vdb_post_pkg_postinst

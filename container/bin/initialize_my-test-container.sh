@@ -3,7 +3,6 @@
 echo ""
 echo "!! Getting scripts and git portage configuration from "
 echo "!!   https://github.com/juippis/my-gentoo-lxd-scripts"
-echo "!!   https://github.com/ionenwks/ionen-dev-scripts"
 echo ""
 
 sleep 5
@@ -15,9 +14,6 @@ git config core.sparsecheckout true
 echo container/bin/* > .git/info/sparse-checkout
 echo container/etc/* >> .git/info/sparse-checkout
 git read-tree -m -u HEAD
-
-cd /root || exit
-git clone --depth=1 https://github.com/ionenwks/ionen-dev-scripts.git || exit
 
 echo ""
 echo "!! Git configuration done."
@@ -55,13 +51,10 @@ echo ""
 echo "!! Modifying /root/.bashrc and /root/.profile to our needs."
 echo ""
 
-echo "PATH=\"\$PATH:~/lxd-bin/container/bin:~/ionen-dev-scripts/scripts/\"" >> /root/.bashrc
+echo "PATH=\"\$PATH:~/lxd-bin/container/bin\"" >> /root/.bashrc
 echo "/root/lxd-bin/container/bin/fixshm.sh" >> /root/.bashrc
 /root/lxd-bin/container/bin/fixshm.sh
 cp /root/.bashrc /root/.profile
-
-# qa-sed needs +x from portage
-chmod 0711 /root
 
 echo ""
 echo "!! Switching portage tree to git, and syncing."
@@ -93,9 +86,8 @@ echo "!! and finally install the software you're going to use:"
 echo "!!   emerge -av app-admin/eclean-kernel app-editors/emacs \\"
 echo "     app-emacs/ebuild-mode app-editors/vim app-portage/gentoolkit \\"
 echo "     app-portage/pfl app-portage/portage-utils app-portage/repoman \\"
-echo "     app-text/ansifilter dev-python/sphinx dev-util/pkgcheck \\"
-echo "     sys-kernel/gentoo-kernel-bin x11-base/xorg-server \\"
-echo "     app-portage/pkg-testing-tool"
+echo "     app-text/ansifilter dev-util/pkgcheck sys-kernel/gentoo-kernel-bin \\"
+echo "     app-portage/pkg-testing-tool app-portage/iwdevtools"
 echo ""
 echo "Continue reading: "
 echo "  https://wiki.gentoo.org/wiki/User:Juippis/The_ultimate_testing_system_with_lxd#Update_your_container"
