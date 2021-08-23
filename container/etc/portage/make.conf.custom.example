@@ -1,8 +1,10 @@
 # Rename as /etc/portage/make.conf.custom which gets sourced. 
 # Edit to your needs.
+# Settings here will override make.conf.
 
-EMERGE_DEFAULT_OPTS="--jobs=8 --usepkg --autounmask=y --autounmask-write --autounmask-continue --autounmask-use=y"
+EMERGE_DEFAULT_OPTS="--autounmask=y --autounmask-continue --autounmask-use=y --autounmask-write --buildpkg-exclude virtual --buildpkg-exclude acct-* --buildpkg-exclude sys-kernel --nospinner --jobs=8 --usepkg"
 MAKEOPTS="-j16 -l10"
+FEATURES="binpkg-multi-instance buildpkg parallel-fetch parallel-install"
 
 # note that lz4 compression requires app-arch/lz4 to be installed.
 BINPKG_COMPRESS="lz4"
