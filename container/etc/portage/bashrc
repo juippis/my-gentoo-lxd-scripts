@@ -1,3 +1,4 @@
+source /usr/share/iwdevtools/qa-cmp.bashrc
 source /usr/share/iwdevtools/qa-sed.bashrc
 source /usr/share/iwdevtools/qa-vdb.bashrc
 
