@@ -2,6 +2,10 @@ source /usr/share/iwdevtools/qa-cmp.bashrc
 source /usr/share/iwdevtools/qa-sed.bashrc
 source /usr/share/iwdevtools/qa-vdb.bashrc
 
+post_pkg_preinst() {
+	qa-cmp_post_pkg_preinst
+}
+
 post_pkg_postinst() {
 	qa-vdb_post_pkg_postinst
 }
