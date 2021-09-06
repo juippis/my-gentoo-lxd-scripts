@@ -1,0 +1,14 @@
+diff -Naur a/src/pkg_testing_tool/use.py c/src/pkg_testing_tool/use.py
+--- a/src/pkg_testing_tool/use.py	2021-07-11 21:31:18.000000000 +0300
++++ c/src/pkg_testing_tool/use.py	2021-09-06 15:00:31.982653668 +0300
+@@ -40,6 +40,10 @@
+     ignore_flags = set([
+             'debug',
+             'doc',
++            'examples',
++            'gtk-doc',
++            'man',
++            'profile',
+             'test',
+             'selinux',
+             'split-usr',

@@ -1,0 +1,26 @@
+diff -Naur a/src/pkg_testing_tool/main.py b/src/pkg_testing_tool/main.py
+--- a/src/pkg_testing_tool/main.py	2021-07-11 21:31:18.000000000 +0300
++++ b/src/pkg_testing_tool/main.py	2021-09-06 14:55:23.313431848 +0300
+@@ -142,7 +142,7 @@
+     emerge_cmdline = [
+         'emerge',
+         '--verbose', 'y',
+-        '--autounmask', 'n',
++        '--oneshot',
+         '--usepkg-exclude', job['cp'],
+         '--deep', '--backtrack', '300',
+     ]
+diff -Naur a/src/pkg_testing_tool/use.py b/src/pkg_testing_tool/use.py
+--- a/src/pkg_testing_tool/use.py	2021-07-11 21:31:18.000000000 +0300
++++ b/src/pkg_testing_tool/use.py	2021-09-06 14:59:09.896192505 +0300
+@@ -40,6 +40,10 @@
+     ignore_flags = set([
+             'debug',
+             'doc',
++            'examples',
++            'gtk-doc',
++            'man',
++            'profile',
+             'test',
+             'selinux',
+             'split-usr',
