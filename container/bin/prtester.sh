@@ -31,15 +31,16 @@ for i in "${newcommits[@]}"; do
 done
 
 # Remove any duplicate entries, we only need to test the final ebuild once.
-eval pkgstobetestedfinalarray=( $(printf "%q\n" "${pkgstobetestedtmp1[@]}" | uniq) )
+declare -A tmpsortarray
+for i in "${pkgstobetestedtmp1[@]}"; do tmpsortarray["${i}"]=1; done
+mapfile -t pkgstobetestedfinalarray < <(printf '%s\n' "${!tmpsortarray[@]}")
 
 # Let's print what we're about to test.
 echo "Packages to be tested:"
 echo "${pkgstobetestedfinalarray[@]}"
 echo ""
 
-# We'll need to go through commit array in reverse order.
-for (( j=${#pkgstobetestedfinalarray[@]}-1; j>=0; j-- )); do
+for (( j=0; j<=${#pkgstobetestedfinalarray[@]}; j++ )); do
 	atom=$(echo "${pkgstobetestedfinalarray[${j}]}" | cut -d  "/" -f 2)
 	pkg-testing-tool --extra-env-file 'test.conf' --test-feature-scope once \
 		--max-use-combinations 6 --report /var/tmp/portage/vbslogs/"${atom}"-"${j}".json \
