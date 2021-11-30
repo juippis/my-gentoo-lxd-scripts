@@ -3,6 +3,7 @@
 # REQUIRED_USE constraints.
 app-editors/vim -X -gpm -python
 app-portage/pfl -network-cron
+dev-cpp/gtkmm X
 dev-lang/mono minimal
 dev-lang/perl ithreads
 dev-lang/python sqlite ssl xml
