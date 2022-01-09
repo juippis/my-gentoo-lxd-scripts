@@ -3,13 +3,13 @@
 # Update the container. Sleeps are added just in case bringing network up is slow. 
 # Adjust to your needs. 
 lxc start my-test-container
-lxc exec my-test-container -- su --login -lc "(sleep 10 && cd ~/lxd-bin && git pull)"
-lxc exec my-test-container -- su --login -lc "emerge --sync"
-lxc exec my-test-container -- su --login -lc "(emerge -uvDN --binpkg-changed-deps=y --keep-going @world && emerge --depclean --with-bdeps=n)"
-lxc exec my-test-container -- su --login -lc "eclean-kernel -n 1"
-lxc exec my-test-container -- su --login -lc "(eselect news read && etc-update)"
-lxc exec my-test-container -- su --login -lc "pfl"
-lxc exec my-test-container -- su --login -lc "eclean packages --changed-deps"
+lxc exec my-test-container -- su -lc "(sleep 10 && cd ~/lxd-bin && git pull)"
+lxc exec my-test-container -- su -lc "emerge --sync"
+lxc exec my-test-container -- su -lc "(emerge -uvDN --binpkg-changed-deps=y --keep-going @world && emerge --depclean --with-bdeps=n)"
+lxc exec my-test-container -- su -lc "eclean-kernel -n 1"
+lxc exec my-test-container -- su -lc "(eselect news read && etc-update)"
+lxc exec my-test-container -- su -lc "pfl"
+lxc exec my-test-container -- su -lc "eclean packages --changed-deps"
 lxc stop my-test-container
 
 # Delete all old snapshots. Note that this will NOT delete active containers!
