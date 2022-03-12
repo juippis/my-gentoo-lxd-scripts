@@ -17,6 +17,7 @@ if [[ -d "/var/tmp/portage/vbslogs/build/" ]]; then
 	grep -r "command not found" /var/tmp/portage/vbslogs/build/
 	grep -r "WARNING: Unknown options:" /var/tmp/portage/vbslogs/build/
 	grep -r "QA:" /var/tmp/portage/vbslogs/build/
+	grep -r "fatal:" /var/tmp/portage/vbslogs/build/
 	echo "Finished grepping."
 
 else
