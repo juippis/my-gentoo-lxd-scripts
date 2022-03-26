@@ -27,6 +27,12 @@ This repo collects the scripts and configs required to run ["ultimate lxd testin
 * https://wiki.gentoo.org/wiki/LXD
 * https://linuxcontainers.org/lxd/getting-started-cli/
 * https://packages.gentoo.org/packages/app-emulation/lxd
+* https://spdx.org/licenses/CC0-1.0.html
+
+
+## License
+
+All of these scripts are licensed under ["CC0-1.0"](https://spdx.org/licenses/CC0-1.0.html). In other words, do **whatever** you want with them. No warranty given. ["See also"](https://wiki.creativecommons.org/wiki/CC0).
 
 
 ## TODO
