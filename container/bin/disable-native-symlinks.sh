@@ -7,14 +7,14 @@ mkdir -p /etc/portage/profile/
 {
 	echo "dev-lang/python-exec -native-symlinks"
 	echo "sys-devel/binutils-config -native-symlinks"
-	echo "sys-devel/gcc-config -native-symlinks"
+	echo "sys-devel/gcc-config -cc-wrappers -native-symlinks"
 } > /etc/portage/profile/package.use.force
 
 if [[ -d /etc/portage/package.use ]]; then
 	{
 		echo "dev-lang/python-exec -native-symlinks"
 		echo "sys-devel/binutils-config -native-symlinks"
-		echo "sys-devel/gcc-config -native-symlinks"
+		echo "sys-devel/gcc-config -cc-wrappers -native-symlinks"
 	} > /etc/portage/package.use/native-symlinks
 
 else
@@ -25,4 +25,4 @@ else
 	} >> /etc/portage/package.use
 fi
 
-emerge -1av --usepkg=n dev-lang/python-exec sys-devel/binutils-config sys-devel/gcc-config
+emerge -1av --usepkg-exclude dev-lang/python-exec --usepkg-exclude sys-devel/binutils-config --usepkg-exclude sys-devel/gcc-config dev-lang/python-exec sys-devel/binutils-config sys-devel/gcc-config
