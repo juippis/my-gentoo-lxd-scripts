@@ -69,7 +69,7 @@ main() {
 			testingpkgname=$(echo "${atomname}" | cut -d  "/" -f 2)
 
 			if [[ -n ${uses} ]]; then
-				exportlist=$(echo "${uses}" | sed 's/+/ /g' | sed 's/!\w\+//g')
+				exportlist=$(echo "${uses}" | sed 's/+/ /g' | sed 's/!/-/g')
 			fi
 
 			export USE="${exportlist}"
