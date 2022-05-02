@@ -47,8 +47,6 @@ Nothing too ambitious. As long as it works...
  
 	* Getting a list of only stable-rdeps, for better arch testing work. Eix can do this and should be utilized...
  
- 	* Rdep list with "+" and "!" USE flags need to be taken into account better.
-
  * host/bin/test-pr.sh
  
 	* Parameters for different kinds of testing, e.g.,
