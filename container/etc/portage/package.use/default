@@ -8,11 +8,9 @@ dev-lang/mono minimal
 dev-lang/perl ithreads
 dev-lang/python sqlite ssl xml
 dev-python/pypy3 sqlite
-dev-qt/qtwebengine -jumbo-build
 dev-util/pkgcheck network
 dev-vcs/git -perl -python -webdav
 media-libs/libcanberra alsa udev
-net-libs/webkit-gtk -jumbo-build X
-sys-apps/portage gentoo-dev -rsync-verify
+net-libs/webkit-gtk X
+sys-apps/portage -gentoo-dev -rsync-verify
 sys-kernel/gentoo-kernel-bin -initramfs
-x11-base/xorg-server xvfb
