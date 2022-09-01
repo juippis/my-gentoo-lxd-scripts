@@ -2,8 +2,8 @@
 # Edit to your needs.
 # Settings here will override make.conf.
 
-EMERGE_DEFAULT_OPTS="--autounmask=y --autounmask-continue --autounmask-use=y --autounmask-write --binpkg-changed-deps=y --buildpkg-exclude virtual/* --buildpkg-exclude acct-* --buildpkg-exclude sys-kernel/* --nospinner --jobs=8 --usepkg"
-MAKEOPTS="-j16 -l10"
+EMERGE_DEFAULT_OPTS="--autounmask=y --autounmask-continue --autounmask-use=y --autounmask-write --binpkg-changed-deps=y --buildpkg-exclude virtual/* --buildpkg-exclude acct-* --buildpkg-exclude sys-kernel/* --complete-graph --nospinner --jobs=8 --usepkg"
+MAKEOPTS="-j16"
 FEATURES="binpkg-multi-instance buildpkg parallel-fetch parallel-install"
 
 # note that lz4 compression requires app-arch/lz4 to be installed.
