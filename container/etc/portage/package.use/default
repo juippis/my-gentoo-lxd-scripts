@@ -12,5 +12,6 @@ dev-util/pkgcheck network
 dev-vcs/git -perl -python -webdav
 media-libs/libcanberra alsa udev
 net-libs/webkit-gtk X
+sci-libs/pcl usb
 sys-apps/portage -gentoo-dev -rsync-verify
 sys-kernel/gentoo-kernel-bin -initramfs
