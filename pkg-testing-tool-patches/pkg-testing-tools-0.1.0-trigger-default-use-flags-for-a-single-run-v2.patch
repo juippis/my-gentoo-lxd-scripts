@@ -1,0 +1,12 @@
+diff -Naur a/src/pkg_testing_tool/main.py b/src/pkg_testing_tool/main.py
+--- a/src/pkg_testing_tool/main.py	2021-07-11 21:31:18.000000000 +0300
++++ b/src/pkg_testing_tool/main.py	2022-11-24 20:14:36.486246175 +0200
+@@ -237,7 +237,7 @@
+     if args.append_required_use:
+         package_metadata['ruse'].append(args.append_required_use)
+
+-    if package_metadata['iuse']:
++    if package_metadata['iuse'] and args.max_use_combinations > 1:
+         use_combinations = get_use_combinations(package_metadata['iuse'], package_metadata['ruse'], args.max_use_combinations)
+     else:
+         use_combinations = None
