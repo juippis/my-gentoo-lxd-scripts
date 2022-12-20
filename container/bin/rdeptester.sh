@@ -46,7 +46,16 @@ main() {
 	fi
 
 	wget https://qa-reports.gentoo.org/output/genrdeps/dindex/"${atom}" -O /tmp/"${pkgname}"-rdeps.txt
-	sed -e '/9999/d' -e '/[B]/d' -e '/virtual\//d' -i /tmp/"${pkgname}"-rdeps.txt
+
+	# Remove live ebuilds as they can always be broken and aren't realiable in this test, 
+	# blockers because they mess up the whole tests e.g. by unmerging the atom we're testing with !, 
+	# some big random packages that take a long time to build and
+	# virtuals because they don't compile anything.
+	sed -e '/9999/d' \
+		-e '/[B]/d' \
+		-e '/dev-qt\/qtwebengine/d' -e '/^app-office\/libreoffice$/d' -e '/^www-client\/chromium$/d' \
+		-e '/virtual\//d' \
+		-i /tmp/"${pkgname}"-rdeps.txt
 
 	mapfile -t allrdepsarray < <(cat /tmp/"${pkgname}"-rdeps.txt)
 
