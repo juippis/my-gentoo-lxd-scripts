@@ -53,7 +53,7 @@ main() {
 	# virtuals because they don't compile anything.
 	sed -e '/9999/d' \
 		-e '/[B]/d' \
-		-e '/dev-qt\/qtwebengine/d' -e '/^app-office\/libreoffice$/d' -e '/^www-client\/chromium$/d' \
+		-e '/dev-qt\/qtwebengine/d' -e '/app-office\/libreoffice/d' -e '/www-client\/chromium/d' \
 		-e '/virtual\//d' \
 		-i /tmp/"${pkgname}"-rdeps.txt
 
