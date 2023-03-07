@@ -82,7 +82,7 @@ main() {
 			fi
 
 			export USE="${exportlist}"
-			pkg-testing-tool --append-emerge '--autounmask=n --oneshot' --extra-env-file 'test.conf' \
+			pkg-testing-tool --append-emerge '--autounmask=y --oneshot' --extra-env-file 'test.conf' \
 				--test-feature-scope never --append-required-use '!doc !examples !gtk-doc !test' \
 				--max-use-combinations 1 --report /var/tmp/portage/vbslogs/"${testingpkgname}-${k}.json" \
 				-p "=${atomname}"
@@ -105,7 +105,7 @@ main() {
 			fi
 
 			export USE="${exportlist}"
-			pkg-testing-tool --append-emerge '--autounmask=n --oneshot' --extra-env-file 'test.conf' \
+			pkg-testing-tool --append-emerge '--autounmask=y --oneshot' --extra-env-file 'test.conf' \
 				--test-feature-scope never --append-required-use '!doc !examples !gtk-doc !test' \
 				--max-use-combinations 1 --report /var/tmp/portage/vbslogs/"${testingpkgname}-${l}.json" \
 				-p "=${atomname}"
