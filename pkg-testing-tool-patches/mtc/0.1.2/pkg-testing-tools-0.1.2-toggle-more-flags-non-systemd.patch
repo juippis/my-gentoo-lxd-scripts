@@ -1,0 +1,24 @@
+diff -Naur a/src/pkg_testing_tool/use.py b/src/pkg_testing_tool/use.py
+--- a/src/pkg_testing_tool/use.py	2023-03-02 19:45:48.000000000 +0200
++++ b/src/pkg_testing_tool/use.py	2023-03-07 09:09:54.066517071 +0200
+@@ -31,6 +31,7 @@
+             'l10n_',
+             'kernel_',
+             'abi_',
++            'python_single_target_',
+             'python_target_',
+             'python_targets_',
+             'ruby_targets_',
+@@ -39,10 +40,11 @@
+ 
+     ignore_flags = set([
+             'debug',
+-            'doc',
++            'profile',
+             'test',
+             'selinux',
+             'split-usr',
++            'systemd',
+             'pic'
+     ])
+ 
