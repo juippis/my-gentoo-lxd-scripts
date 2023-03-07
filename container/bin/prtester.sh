@@ -42,8 +42,8 @@ echo ""
 
 for (( j=0; j<${#pkgstobetestedfinalarray[@]}; j++ )); do
 	atom=$(echo "${pkgstobetestedfinalarray[${j}]}" | cut -d  "/" -f 2)
-	pkg-testing-tool --extra-env-file 'test.conf' --test-feature-scope once \
-		--max-use-combinations 6 --report /var/tmp/portage/vbslogs/"${atom}"-"${j}".json \
+	pkg-testing-tool --append-emerge '--autounmask=n --oneshot' --extra-env-file 'test.conf' \
+		--test-feature-scope once --max-use-combinations 6 --report /var/tmp/portage/vbslogs/"${atom}"-"${j}".json \
 		-p "=${pkgstobetestedfinalarray[${j}]}"
 done
 
