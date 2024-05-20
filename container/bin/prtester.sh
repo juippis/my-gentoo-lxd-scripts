@@ -27,15 +27,15 @@ echo "Ebuilds to be tested:"
 echo "${pkgstobetested[@]}"
 echo ""
 
-for pkg in "${pkgstobetested[@]}"; do
-	atom="${pkg##*/}"
-	atom="${atom%.ebuild}"
-	pkg-testing-tool --append-emerge '--autounmask=y --oneshot' \
-		--extra-env-file 'test.conf' \
-		--test-feature-scope once --max-use-combinations 6 \
-		--report /var/tmp/portage/vbslogs/"${atom}".json \
-		-f "${pkg}"
-done
+commit="$(git rev-parse --short=8 HEAD)"
+pkg-testing-tool --append-emerge '--autounmask=y --oneshot' \
+	--extra-env-file 'test.conf' \
+	--test-feature-scope once --max-use-combinations 6 \
+	--report /var/tmp/portage/vbslogs/"${commit}".json \
+	"${pkgstobetested[@]/#/-f }"
 
 echo "Error reports for failed atoms, use errors_and_qa_notices.sh to find out exact errors:"
-grep -r exit_code /var/tmp/portage/vbslogs/ | grep "1,"
+# Print previous line after a pattern match using sed: https://unix.stackexchange.com/a/206887
+grep -e atom -e exit_code /var/tmp/portage/vbslogs/"${commit}".json | \
+	sed -n '/exit_code": 1/{x;p;d;}; x' | uniq | \
+	awk -F ": " '{print $2}'
