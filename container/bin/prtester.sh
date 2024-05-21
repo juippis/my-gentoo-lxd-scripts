@@ -24,7 +24,7 @@ pkgstobetested=(
 
 # Let's print what we're about to test.
 echo "Ebuilds to be tested:"
-echo "${pkgstobetested[@]}"
+printf "%s\n" "${pkgstobetested[@]}"
 echo ""
 
 commit="$(git rev-parse --short=8 HEAD)"
