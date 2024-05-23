@@ -32,7 +32,7 @@ pkg-testing-tool --append-emerge '--autounmask=y --oneshot' \
 	--extra-env-file 'test.conf' \
 	--test-feature-scope once --max-use-combinations 6 \
 	--report /var/tmp/portage/vbslogs/"${commit}".json \
-	"${pkgstobetested[@]/#/-f }"
+	"${pkgstobetested[@]/#/-f}"
 
 echo "Error reports for failed atoms, use errors_and_qa_notices.sh to find out exact errors:"
 # Print previous line after a pattern match using sed: https://unix.stackexchange.com/a/206887
