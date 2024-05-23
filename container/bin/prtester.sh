@@ -11,41 +11,31 @@
 
 cd /var/db/repos/gentoo || exit
 
-# Create an array of commits
-mapfile -t newcommits < <(git rev-list origin/HEAD..HEAD)
-declare -a pkgstobetestedtmp1
-declare -a pkgstobetestedfinalarray
-
-if [[ ${#newcommits[@]} -eq 0 ]]; then
+# git rev-list --quiet doesn't seem to work as intended (v2.44.1)
+if [[ -z "$(git rev-list origin/HEAD..HEAD)" ]]; then
 	echo "Couldn't find new commits to test. Exiting..."
 	exit
 fi
 
-# Please send help with the grepping...
-# /^[+-]{3} [a-z]\/([^\/]+)\/[^\/]+\/(.*)\.ebuild/
-# | grep -E '\+\+\+' | grep ".ebuild" | cut -d  "/" -f 2,4 | awk -F  '.ebuild' '{print $1}'
-# | grep -E '^[+]{3} [a-z]/([^\/]+)/[^\/]+/(.*)\.ebuild$' | sed 's#^[+-]\{3\} [a-z]/ \([^/]\+\)/[^/]\+/\(.*\)\.ebuild#\1/\2#'
-for i in "${newcommits[@]}"; do
-	pkgstobetestedtmp1+=( $(git show "${i}" | grep -E '^[+]{3} [a-z]/([^\/]+)/[^\/]+/(.*)\.ebuild$' | sed 's#^[+]\{3\} [a-z]/\([^/]\+\)/[^/]\+/\(.*\)\.ebuild#\1/\2#') )
-	pkgstobetestedtmp1+=( $(git show "${i}" | grep "rename to" | grep ".ebuild" | cut -d " " -f3 | cut -d  "/" -f 1,3 | awk -F  '.ebuild' '{print $1}') )
-done
-
-# Remove any duplicate entries, we only need to test the final ebuild once.
-declare -A tmpsortarray
-for i in "${pkgstobetestedtmp1[@]}"; do tmpsortarray["${i}"]=1; done
-mapfile -t pkgstobetestedfinalarray < <(printf '%s\n' "${!tmpsortarray[@]}")
+pkgstobetested=(
+	$(git show --name-only --diff-filter=AMR --format=tformat: \
+	origin/HEAD..HEAD | sort -u | grep ebuild)
+)
 
 # Let's print what we're about to test.
-echo "Packages to be tested:"
-echo "${pkgstobetestedfinalarray[@]}"
+echo "Ebuilds to be tested:"
+printf "%s\n" "${pkgstobetested[@]}"
 echo ""
 
-for (( j=0; j<${#pkgstobetestedfinalarray[@]}; j++ )); do
-	atom=$(echo "${pkgstobetestedfinalarray[${j}]}" | cut -d  "/" -f 2)
-	pkg-testing-tool --append-emerge '--autounmask=y --oneshot' --extra-env-file 'test.conf' \
-		--test-feature-scope once --max-use-combinations 6 --report /var/tmp/portage/vbslogs/"${atom}"-"${j}".json \
-		-p "=${pkgstobetestedfinalarray[${j}]}"
-done
+commit="$(git rev-parse --short=8 HEAD)"
+pkg-testing-tool --append-emerge '--autounmask=y --oneshot' \
+	--extra-env-file 'test.conf' \
+	--test-feature-scope once --max-use-combinations 6 \
+	--report /var/tmp/portage/vbslogs/"${commit}".json \
+	"${pkgstobetested[@]/#/-f}"
 
 echo "Error reports for failed atoms, use errors_and_qa_notices.sh to find out exact errors:"
-grep -r exit_code /var/tmp/portage/vbslogs/ | grep "1,"
+# Print previous line after a pattern match using sed: https://unix.stackexchange.com/a/206887
+grep -e atom -e exit_code /var/tmp/portage/vbslogs/"${commit}".json | \
+	sed -n '/exit_code": 1/{x;p;d;}; x' | uniq | \
+	awk -F ": " '{print $2}'
