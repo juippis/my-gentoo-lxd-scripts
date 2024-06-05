@@ -17,10 +17,12 @@ if [[ -z "$(git rev-list origin/HEAD..HEAD)" ]]; then
 	exit
 fi
 
-pkgstobetested=(
-	$(git show --name-only --diff-filter=AMR --format=tformat: \
-	origin/HEAD..HEAD | sort -u | grep ebuild)
-)
+candidates="$(git show --name-only --diff-filter=AMR --format=tformat: \
+	origin/HEAD..HEAD | sort -u | grep ebuild)"
+pkgstobetested=()
+for ebuild in ${candidates}; do
+	[[ -f "${ebuild}" ]] && pkgstobetested+=("${ebuild}")
+done
 
 # Let's print what we're about to test.
 echo "Ebuilds to be tested:"
